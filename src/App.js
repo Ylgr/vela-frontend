@@ -27,11 +27,12 @@ class App extends Component {
     //             </ul>
     //         );
     //     }
-    render() {
+ //{/*<WalletPage />*/}
+
+render() {
         return(
             <div>
                 <h1>adasdasd</h1>
-            <WalletPage />
             </div>
         )
     }
