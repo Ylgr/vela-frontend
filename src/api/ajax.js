@@ -11,6 +11,9 @@ class Ajax {
             responseType: 'json',
             crossDomain: true,
             withCredentials: true,
+            transformResponse: [function (data) {
+                return data;
+            }]
         })
     }
 }

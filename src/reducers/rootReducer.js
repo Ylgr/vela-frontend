@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
-import gasWallet from './gasWalletReducer';
+import gasWallets from './gasWalletReducer';
 
 
 const rootReducer = combineReducers({
-    gasWallet
+    gasWallets
 });
 
 export default rootReducer;

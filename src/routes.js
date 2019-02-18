@@ -1,9 +1,16 @@
 import React from 'react';
-import {Route} from 'react-router';
+// import {Route} from 'react-router';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+
 import App from './App';
+import WalletPage from './components/gas/wallet/WalletPage';
 
 export default (
-  <Route path="/" component={App}>
-
-  </Route>
+    <BrowserRouter>
+        <div>
+            <Switch>
+                <WalletPage exact path="/" />
+            </Switch>
+        </div>
+    </BrowserRouter>
 );

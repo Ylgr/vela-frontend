@@ -1,11 +1,11 @@
 import * as type from '../actions/actionTypes';
 import initialState from './initialState';
 
-export default function GasWalletReducer(gasWallets = initialState.gasWallets,action) {
+export default function GasWalletReducer(state = initialState.gasWallets,action) {
     switch (action.type) {
-        case type.LOAD_WALLET:
-            return Object.assign({}, gasWallets, {gasWallets: action.gasWallets});
+        case type.LOAD_WALLET_SUCCESS:
+            return action.gasWallets;
         default:
-            return gasWallets;
+            return state;
     }
 }

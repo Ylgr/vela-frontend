@@ -7,7 +7,7 @@ import * as gasWalletActions from '../../../actions/gasWalletActions';
 class WalletPage extends React.Component {
 
     render() {
-        const gasWallets = this.props.gasWallets
+        const gasWallets = this.props.gasWallets;
         return(
 
             <div>
@@ -24,6 +24,7 @@ class WalletPage extends React.Component {
 }
 
 WalletPage.propTypes = {
+    actions: PropTypes.object.isRequired,
     gasWallets: PropTypes.array.isRequired
 };
 
@@ -35,7 +36,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        action: bindActionCreators(gasWalletActions, dispatch)
+        actions: bindActionCreators(gasWalletActions, dispatch)
     };
 }
 

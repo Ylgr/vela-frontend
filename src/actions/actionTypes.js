@@ -1,1 +1,1 @@
-export const LOAD_WALLET = 'LOAD_WALLET';
+export const LOAD_WALLET_SUCCESS = 'LOAD_WALLET_SUCCESS';

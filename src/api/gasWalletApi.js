@@ -6,4 +6,5 @@ class GasWalletApi extends Ajax{
     }
 }
 
-export default GasWalletApi;
+const gasWalletApi = new GasWalletApi();
+export default gasWalletApi;
