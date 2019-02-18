@@ -1,8 +1,12 @@
 import Ajax from './ajax';
 
 class GasWalletApi extends Ajax{
-    get() {
+    getList() {
         return this.ajax().get('api/Gas')
+    }
+
+    get(id){
+        return this.ajax().get('api/Gas/' + id)
     }
 }
 

@@ -1,3 +1,4 @@
 export default {
-  gasWallets: []
+    gasWallets: [],
+    gasWallet: {}
 };

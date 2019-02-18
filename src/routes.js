@@ -2,14 +2,15 @@ import React from 'react';
 // import {Route} from 'react-router';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import App from './App';
+import MainApp from './components/MainApp';
 import WalletPage from './components/gas/wallet/WalletPage';
 
 export default (
     <BrowserRouter>
         <div>
             <Switch>
-                <WalletPage exact path="/" />
+                <Route exact path="/" component={MainApp}/>
+                <Route path="/login" component={WalletPage}/>
             </Switch>
         </div>
     </BrowserRouter>

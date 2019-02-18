@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
 import routes from './routes';
-import {loadWallet} from './actions/gasWalletActions';
+import {loadWallets, loadWallet} from './actions/gasWalletActions';
 
 const store = configureStore();
+store.dispatch(loadWallets());
 store.dispatch(loadWallet());
 
 ReactDOM.render(

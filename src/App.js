@@ -8,7 +8,7 @@ class App extends Component {
     // }
     //
     // componentDidMount() {
-    //     axios.get('http://localhost:3000/api/Gas')
+    //     axios.getList('http://localhost:3000/api/Gas')
     //         .then(response => {
     //             this.setState({gasList: response.data})
     //         })
