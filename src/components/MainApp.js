@@ -1,34 +1,24 @@
 import React from 'react';
+import LoginForm from './login/LoginForm';
+import WalletHome from './gas/wallet/WalletHome';
+import connect from "react-redux/es/connect/connect";
 
 class MainApp extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {value: ''};
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(input) {
-        this.setState({value: input.target.value});
-    }
-
-    handleSubmit(input) {
-        alert('A name was submitted: ' + this.state.value);
-        input.preventDefault();
-    }
 
     render() {
+        console.log(this.props.gasWallet);
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Name:
-                    <input type="text" value={this.state.value} onChange={this.handleChange} />
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
+            <div>
+                {this.props.gasWallet.id ? <WalletHome/> : <LoginForm/>}
+            </div>
         );
     }
 }
 
-export default MainApp;
+function mapStateToProps(state, ownProps) {
+    return {
+        gasWallet: state.gasWallet
+    };
+}
+
+export default connect(mapStateToProps)(MainApp);

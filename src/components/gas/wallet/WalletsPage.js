@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as gasWalletActions from '../../../actions/gasWalletActions';
 
-class WalletPage extends React.Component {
+class WalletsPage extends React.Component {
 
     render() {
         const gasWallets = this.props.gasWallets;
@@ -23,7 +23,7 @@ class WalletPage extends React.Component {
     }
 }
 
-WalletPage.propTypes = {
+WalletsPage.propTypes = {
     actions: PropTypes.object.isRequired,
     gasWallets: PropTypes.array.isRequired
 };
@@ -40,4 +40,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(WalletPage);
+export default connect(mapStateToProps, mapDispatchToProps)(WalletsPage);

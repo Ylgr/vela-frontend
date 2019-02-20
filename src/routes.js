@@ -3,14 +3,14 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import MainApp from './components/MainApp';
-import WalletPage from './components/gas/wallet/WalletPage';
+import WalletsPage from './components/gas/wallet/WalletsPage';
 
 export default (
     <BrowserRouter>
         <div>
             <Switch>
                 <Route exact path="/" component={MainApp}/>
-                <Route path="/login" component={WalletPage}/>
+                <Route path="/login" component={WalletsPage}/>
             </Switch>
         </div>
     </BrowserRouter>

@@ -6,8 +6,8 @@ import routes from './routes';
 import {loadWallets, loadWallet} from './actions/gasWalletActions';
 
 const store = configureStore();
-store.dispatch(loadWallets());
-store.dispatch(loadWallet());
+//store.dispatch(loadWallets());
+//store.dispatch(loadWallet());
 
 ReactDOM.render(
     <Provider store = {store}>

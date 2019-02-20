@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import WalletPage from './components/gas/wallet/WalletPage'
+import WalletPage from './components/gas/wallet/WalletsPage'
 
 class App extends Component {
     // state = {
