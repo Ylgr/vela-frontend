@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as gasWalletActions from '../../../actions/gasWalletActions';
+import * as gasWalletActions from '../../actions/gasWalletActions';
 
 class WalletsPage extends React.Component {
 

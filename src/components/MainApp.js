@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginForm from './login/LoginForm';
-import WalletHome from './gas/wallet/WalletHome';
+import WalletHome from './wallet/WalletHome';
 import connect from "react-redux/es/connect/connect";
 
 class MainApp extends React.Component {
