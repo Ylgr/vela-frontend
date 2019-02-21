@@ -12,7 +12,7 @@ class App extends Component {
     //         .then(response => {
     //             this.setState({gasList: response.data})
     //         })
-    //         .catch(error => console.log(error))
+    //      editor   .catch(error => console.log(error))
     // };
     //
     //

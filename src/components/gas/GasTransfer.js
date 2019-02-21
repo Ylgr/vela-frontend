@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import {bindActionCreators} from "redux";
-import * as gasWalletActions from "../../actions/gasWalletActions";
+import * as gasTransferAction from "../../actions/gasTransferActions";
 import connect from "react-redux/es/connect/connect";
 
 class GasTransfer extends React.Component{
@@ -27,8 +27,13 @@ class GasTransfer extends React.Component{
     }
 
     handleSubmit(input) {
-        alert(":dance:");
         input.preventDefault();
+        const request = {
+            "sender": "resource:org.vela.gas.Gas#" + this.props.gasWallet.id,
+            "receiver": "resource:org.vela.gas.Gas#" + this.state.receiver,
+            "amount": this.state.amount
+        };
+        this.props.actions.transferGas(request);
     }
 
     render() {
@@ -78,7 +83,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(gasWalletActions, dispatch)
+        actions: bindActionCreators(gasTransferAction, dispatch)
     };
 }
 

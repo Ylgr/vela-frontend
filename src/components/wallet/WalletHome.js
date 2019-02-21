@@ -1,5 +1,6 @@
 import React from "react";
 import GasTransfer from "../gas/GasTransfer";
+import WalletHistory from "./WalletHistory";
 import connect from "react-redux/es/connect/connect";
 
 class WalletHome extends React.Component {
@@ -9,7 +10,7 @@ class WalletHome extends React.Component {
             <div>
                 <h1>{wallet.id}</h1>
                 <h1>{wallet.amount}</h1>
-                <button>History</button>
+                <WalletHistory logs={wallet.transactions}/>
                 <GasTransfer/>
             </div>
         )
