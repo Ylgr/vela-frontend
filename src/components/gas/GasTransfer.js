@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {bindActionCreators} from "redux";
 import * as gasTransferAction from "../../actions/gasTransferActions";
 import connect from "react-redux/es/connect/connect";
+import Modal from 'react-modal';
 
 class GasTransfer extends React.Component{
 
@@ -10,12 +11,17 @@ class GasTransfer extends React.Component{
         super(props);
         this.state = {
             receiver: '',
-            amount: ''
+            amount: '',
+            modalIsOpen: false
         };
 
         this.handleReceiverChange = this.handleReceiverChange.bind(this);
         this.handleAmountChange = this.handleAmountChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    openModal() {
+        this.setState({modalIsOpen: true});
     }
 
     handleReceiverChange(input) {
@@ -27,43 +33,70 @@ class GasTransfer extends React.Component{
     }
 
     handleSubmit(input) {
-        input.preventDefault();
         const request = {
             "sender": "resource:org.vela.gas.Gas#" + this.props.gasWallet.id,
             "receiver": "resource:org.vela.gas.Gas#" + this.state.receiver,
             "amount": this.state.amount
         };
         this.props.actions.transferGas(request);
+        this.setState({modalIsOpen: false});
     }
+
+    closeModal() {
+        this.setState({modalIsOpen: false});
+    }
+    // render() {
+    //     return(
+    //         <div>
+    //             <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Transfer Gas</button>
+    //
+    //             <div className="modal fade" id="myModal" role="dialog">
+    //                 <div className="modal-dialog">
+    //
+    //                     <div className="modal-content">
+    //                         <div className="modal-header">
+    //                             <h4 className="modal-title">Transfer Gas</h4>
+    //                             <button type="button" className="close" data-dismiss="modal">&times;</button>
+    //
+    //                         </div>
+    //                         <form onSubmit={this.handleSubmit}>
+    //                             <div className="modal-body">
+    //                                 <label>Receiver: <input type="text" value={this.state.value} onChange={this.handleReceiverChange} /></label>
+    //                                 <label>Amount:   <input type="text" value={this.state.value} onChange={this.handleAmountChange} /></label>
+    //                             </div>
+    //                             <div className="modal-footer">
+    //                                 <button className="btn btn-primary" type="submit">Submit</button>
+    //                                 <button className="btn btn-default" data-dismiss="modal">Close</button>
+    //                             </div>
+    //                         </form>
+    //                     </div>
+    //
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     )
+    // }
 
     render() {
         return(
             <div>
-                <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Transfer Gas</button>
-
-                <div className="modal fade" id="myModal" role="dialog">
-                    <div className="modal-dialog">
-
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h4 className="modal-title">Transfer Gas</h4>
-                                <button type="button" className="close" data-dismiss="modal">&times;</button>
-
-                            </div>
-                            <form onSubmit={this.handleSubmit}>
-                                <div className="modal-body">
-                                    <label>Receiver: <input type="text" value={this.state.value} onChange={this.handleReceiverChange} /></label>
-                                    <label>Amount:   <input type="text" value={this.state.value} onChange={this.handleAmountChange} /></label>
-                                </div>
-                                <div className="modal-footer">
-                                    <button className="btn btn-primary" type="submit">Submit</button>
-                                    <button className="btn btn-default" data-dismiss="modal">Close</button>
-                                </div>
-                            </form>
+                <button onClick={this.openModal}>Transfer Gas</button>
+                <Modal
+                    isOpen={this.state.modalIsOpen}
+                    onRequestClose={this.closeModal}
+                    contentLabel="Example Modal">
+                    <button onClick={this.closeModal}>close</button>
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="modal-body">
+                            <label>Receiver: <input type="text" value={this.state.value} onChange={this.handleReceiverChange} /></label>
+                            <label>Amount:   <input type="text" value={this.state.value} onChange={this.handleAmountChange} /></label>
                         </div>
-
-                    </div>
-                </div>
+                        <div className="modal-footer">
+                            <button className="btn btn-primary" type="submit">Submit</button>
+                            <button className="btn btn-default" onClick={this.closeModal}>Close</button>
+                        </div>
+                    </form>
+                    </Modal>
             </div>
         )
     }
