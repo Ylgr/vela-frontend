@@ -12,12 +12,14 @@ class GasTransfer extends React.Component{
         this.state = {
             receiver: '',
             amount: '',
-            modalIsOpen: false
+            modalIsOpen: false,
         };
 
         this.handleReceiverChange = this.handleReceiverChange.bind(this);
         this.handleAmountChange = this.handleAmountChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     openModal() {
