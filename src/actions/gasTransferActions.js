@@ -1,6 +1,7 @@
 import * as types from './actionTypes';
 import apiResult from '../api/apiResult';
 import gasTransferApi from '../api/gasTransferApi';
+import {loadWallet} from './gasWalletActions';
 
 
 export function transferGasSuccess(gas) {
@@ -12,9 +13,12 @@ export function transferGas(data) {
         return gasTransferApi.transfer(data).then(gasWallet => {
             const response = apiResult.success(gasWallet);
             dispatch(transferGasSuccess(response));
-            dispatch(loadWallet()) // load this wallet again
+            dispatch(loadWallet(getSecondPart(data.sender))) // load this wallet again
         }).catch(error => {
             throw (error);
         });
     };
+}
+function getSecondPart(str) {
+    return str.split('#')[1];
 }

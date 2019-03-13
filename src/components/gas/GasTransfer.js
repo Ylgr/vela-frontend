@@ -86,6 +86,7 @@ class GasTransfer extends React.Component{
                 <Modal
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
+                    ariaHideApp={false}
                     contentLabel="Example Modal">
                     <button onClick={this.closeModal}>close</button>
                     <form onSubmit={this.handleSubmit}>
@@ -98,7 +99,7 @@ class GasTransfer extends React.Component{
                             <button className="btn btn-default" onClick={this.closeModal}>Close</button>
                         </div>
                     </form>
-                    </Modal>
+                </Modal>
             </div>
         )
     }
