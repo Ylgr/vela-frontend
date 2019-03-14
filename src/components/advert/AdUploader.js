@@ -6,13 +6,13 @@ class AdUploader extends React.Component {
     render() {
         return(
             <div>
-                <button onClick={this.openModal}>Transfer Gas</button>
+                <button onClick={this.openHistory}>Transfer Gas</button>
                 <Modal
-                    isOpen={this.state.modalIsOpen}
-                    onRequestClose={this.closeModal}
+                    isOpen={this.state.historyIsOpen}
+                    onRequestClose={this.closeHistory}
                     ariaHideApp={false}
                     contentLabel="Example Modal">
-                    <button onClick={this.closeModal}>close</button>
+                    <button onClick={this.closeHistory}>close</button>
                     <form onSubmit={this.handleSubmit}>
                         <div className="modal-body">
                             <label>Receiver: <input type="text" value={this.state.value} onChange={this.handleReceiverChange} /></label>
@@ -20,7 +20,7 @@ class AdUploader extends React.Component {
                         </div>
                         <div className="modal-footer">
                             <button className="btn btn-primary" type="submit">Submit</button>
-                            <button className="btn btn-default" onClick={this.closeModal}>Close</button>
+                            <button className="btn btn-default" onClick={this.closeHistory}>Close</button>
                         </div>
                     </form>
                 </Modal>

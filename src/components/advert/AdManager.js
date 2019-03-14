@@ -5,7 +5,7 @@ class AdManager extends React.Component {
     render() {
         return(
             <div>
-                <h1>Welcome to Wallet Manager!</h1>
+                <h2>Ad Manager</h2>
             </div>
         )
     }
