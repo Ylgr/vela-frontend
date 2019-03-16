@@ -11,7 +11,6 @@ class WalletPicker extends React.Component {
         this.state = {
             walletOpened: {},
         };
-
         this.walletOpened = this.walletOpened.bind(this);
     }
 
@@ -28,7 +27,7 @@ class WalletPicker extends React.Component {
         const advertiser = this.props.advertiser;
         return (
             <div>
-                {advertiser.wallets.map(id => <button onClick={this.walletOpened(id)}>{this.getSecondPart(id)}</button>)}
+                {advertiser.wallets.map(id => <button onClick={() => this.walletOpened(id)} key = {this.getSecondPart(id)}>{this.getSecondPart(id)}</button>)}
             </div>
         );
     }

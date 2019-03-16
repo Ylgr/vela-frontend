@@ -2,7 +2,6 @@ import React from "react";
 import GasTransfer from "../gas/GasTransfer";
 import WalletHistory from "./WalletHistory";
 import connect from "react-redux/es/connect/connect";
-import AdManagerSwitcher from "../advert/AdManagerSwitcher";
 import Modal from 'react-modal';
 
 class WalletHome extends React.Component {
@@ -27,7 +26,6 @@ class WalletHome extends React.Component {
         let wallet = this.props.gasWallet;
         return(
             <div>
-                <AdManagerSwitcher/>
                 <h1>{wallet.id}</h1>
                 <h1>{wallet.amount}</h1>
                 <button onClick={this.openHistory}>Vela transaction history</button>

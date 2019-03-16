@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import WalletHome from '../wallet/WalletHome'
 import AdManager from './AdManager';
 
-class AdManagerSwitcher extends React.Component {
+class AdManagerOpener extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,10 +22,10 @@ class AdManagerSwitcher extends React.Component {
         return(
             <div>
                 <button onClick={this.openOrCloseManager}>Ad Manager</button>
-                {this.state.isOpenManager?<AdManager/>:<p>Click button to open Ad Manager</p>}
+                {this.state.isOpenManager?<AdManager/>:<WalletHome/>}
             </div>
         )
     }
 }
 
-export default AdManagerSwitcher;
+export default AdManagerOpener;

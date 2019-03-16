@@ -1,18 +1,15 @@
 import React from "react";
 import connect from "react-redux/es/connect/connect";
-import Modal from 'react-modal';
-import WalletHome from "./wallet/WalletHome";
 import WalletPicker from "./login/WalletPicker";
-import {bindActionCreators} from "redux";
-import * as gasTransferAction from "../actions/gasTransferActions";
-import PropTypes from "prop-types";
+import AdManagerOpener from "./advert/AdManagerOpener";
+
 
 class AdvertiserManager extends React.Component {
 
     render(){
         return(
             <div>
-                {this.props.gasWallet.id ? <WalletHome/> : <WalletPicker/>}
+                {this.props.gasWallet.id ? <AdManagerOpener/> : <WalletPicker/>}
             </div>
         )
     }
