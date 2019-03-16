@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import {bindActionCreators} from "redux";
-import * as gasWalletActions from "../../actions/gasWalletActions";
+import * as advertiserActions from "../../actions/advertiserActions";
 import connect from "react-redux/es/connect/connect";
 
-class LoginForm extends React.Component {
+class LoginAdvertiserForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,8 +21,7 @@ class LoginForm extends React.Component {
     }
 
     handleSubmit(input) {
-        // alert('A name was submitted: ' + this.state.value);
-        this.props.actions.loadWallet(this.state.value);
+        this.props.actions.loadAdvertiser(this.state.value);
 
         input.preventDefault();
     }
@@ -40,14 +39,14 @@ class LoginForm extends React.Component {
     }
 }
 
-LoginForm.propTypes = {
+LoginAdvertiserForm.propTypes = {
     actions: PropTypes.object.isRequired
 };
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(gasWalletActions, dispatch)
+        actions: bindActionCreators(advertiserActions, dispatch)
     };
 }
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+export default connect(null, mapDispatchToProps)(LoginAdvertiserForm);

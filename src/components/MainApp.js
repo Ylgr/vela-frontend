@@ -1,15 +1,15 @@
 import React from 'react';
-import LoginForm from './login/LoginForm';
-import WalletHome from './wallet/WalletHome';
+import LoginAdvertiserForm from './login/LoginAdvertiserForm';
+import AdvertiserManager from './AdvertiserManager';
 import connect from "react-redux/es/connect/connect";
 
 class MainApp extends React.Component {
 
     render() {
-        console.log(this.props.gasWallet);
+        console.log(this.props.advertiser);
         return (
             <div>
-                {this.props.gasWallet.id ? <WalletHome/> : <LoginForm/>}
+                {this.props.advertiser.id ? <AdvertiserManager/> : <LoginAdvertiserForm/>}
             </div>
         );
     }
@@ -17,7 +17,7 @@ class MainApp extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        gasWallet: state.gasWallet
+        advertiser: state.advertiser
     };
 }
 
