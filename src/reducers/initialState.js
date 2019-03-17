@@ -1,5 +1,6 @@
 export default {
     gasWallets: [],
     advertiser: {},
-    gasWallet: {}
+    gasWallet: {},
+    adReports:[]
 };

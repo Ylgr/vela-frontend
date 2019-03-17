@@ -7,9 +7,9 @@ const AdDetails = (ads) => {
             {ads.map(ad =>
 
                     <div>
-                        <h1>ad.title</h1>
-                        <h1>ad.img</h1>
-                        <h1>ad.clicks</h1>
+                        <h1>{ad.name}</h1>
+                        <h1>{ad.data}</h1>
+                        <h1>{ad.click}</h1>
                     </div>
             )}
         </div>

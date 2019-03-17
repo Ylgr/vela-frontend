@@ -1,7 +1,7 @@
 import Ajax from './ajax';
 
 class AdApi extends Ajax{
-    transfer (data) {
+    create (data) {
         return this.ajax().post('api/AdReport', JSON.stringify(data), {headers: {'Content-Type': 'application/json'}})
     }
 }

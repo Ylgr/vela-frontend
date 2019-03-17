@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AdUploader from "./AdUploader";
+import connect from "react-redux/es/connect/connect";
 
 class AdManager extends React.Component {
     render() {
@@ -13,4 +14,11 @@ class AdManager extends React.Component {
     }
 }
 
-export default AdManager;
+function mapStateToProps(state, ownProps) {
+    return {
+        adReports: state.adReports
+    };
+}
+
+export default connect(mapStateToProps)(AdManager);
+//                <AdDetails ads={this.props.adReports}/>

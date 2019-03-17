@@ -32,3 +32,22 @@ export function loadWallet(id) {
         });
     };
 }
+
+export function addReportSuccess(gasWallet) {
+    return {type: types.ADD_REPORT_SUCCESS, gasWallet}
+}
+
+export function addReport(adId,walletId){
+    return function (dispatch) {
+        const request = {
+            "wallet": "resource:org.vela.gas.Gas#" + walletId,
+            "report": "resource:org.vela.adReport.AdReport#" + adId
+        };
+        return gasWalletApi.addReport(request).then(gasWallet => {
+            const response = apiResult.success(gasWallet);
+            dispatch(addReportSuccess(response));
+        }).catch(error => {
+            throw (error);
+        });
+    };
+}

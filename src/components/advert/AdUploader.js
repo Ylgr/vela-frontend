@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from "react-modal";
 import FileBase64 from 'react-file-base64';
+import {bindActionCreators} from "redux";
+import * as adActions from "../../actions/adActions";
+import connect from "react-redux/es/connect/connect";
 
 class AdUploader extends React.Component {
 
@@ -12,6 +15,7 @@ class AdUploader extends React.Component {
             id: '',
             name: '',
             file: '',
+            url: '',
             isActive: false
         };
         this.openModal = this.openModal.bind(this);
@@ -20,6 +24,7 @@ class AdUploader extends React.Component {
         this.getFiles = this.getFiles.bind(this);
         this.handleChangeId = this.handleChangeId.bind(this);
         this.handleChangeName = this.handleChangeName.bind(this);
+        this.handleChangeUrl = this.handleChangeUrl.bind(this);
         this.handleChangeIsActive = this.handleChangeIsActive.bind(this);
 
     }
@@ -30,6 +35,10 @@ class AdUploader extends React.Component {
 
     handleChangeName(input) {
         this.setState({name: input.target.value});
+    }
+
+    handleChangeUrl(input) {
+        this.setState({url: input.target.value});
     }
 
     handleChangeIsActive(input) {
@@ -52,11 +61,10 @@ class AdUploader extends React.Component {
             "name": this.state.name,
             "data": this.state.file.base64,
             "isActive": this.state.isActive,
-            "click": 0,
-            "impression": 0,
-            "cv": 0,
+            "url": this.state.url
         };
         console.log(res);
+        this.props.actions.createAd(res,this.props.gasWallet)
     }
 
     getFiles(file){
@@ -82,6 +90,10 @@ class AdUploader extends React.Component {
                         Name:
                         <input type="text" value={this.state.name} onChange={this.handleChangeName} />
                     </label>
+                    <label>
+                        Url:
+                        <input type="text" value={this.state.url} onChange={this.handleChangeUrl} />
+                    </label>
 
                     <FileBase64
                         multiple={ false }
@@ -96,4 +108,21 @@ class AdUploader extends React.Component {
     }
 }
 
-export default AdUploader;
+AdUploader.propTypes = {
+    actions: PropTypes.object.isRequired,
+    gasWallet: PropTypes.object.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+    return {
+        gasWallet: state.gasWallet
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(adActions, dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdUploader);
