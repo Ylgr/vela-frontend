@@ -1,12 +1,11 @@
 import React from 'react';
-import LoginAdvertiserForm from './login/LoginAdvertiserForm';
-import AdvertiserManager from './AdvertiserManager';
+import LoginAdvertiserForm from './components/login/LoginAdvertiserForm';
+import AdvertiserManager from './components/AdvertiserManager';
 import connect from "react-redux/es/connect/connect";
 
 class MainApp extends React.Component {
 
     render() {
-        console.log(this.props.advertiser);
         return (
             <div>
                 {this.props.advertiser.id ? <AdvertiserManager/> : <LoginAdvertiserForm/>}

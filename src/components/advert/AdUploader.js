@@ -63,8 +63,7 @@ class AdUploader extends React.Component {
             "isActive": this.state.isActive,
             "url": this.state.url
         };
-        console.log(res);
-        this.props.actions.createAd(res,this.props.gasWallet)
+        this.props.actions.createAd(res,this.props.gasWallet.id)
     }
 
     getFiles(file){
@@ -74,7 +73,7 @@ class AdUploader extends React.Component {
     render() {
         return(
             <div>
-                <button onClick={this.openModal}>Upload Image Data</button>
+                <button onClick={this.openModal}>Create new Ad</button>
                 <Modal
                     isOpen={this.state.isModalOpen}
                     onRequestClose={this.closeModal}

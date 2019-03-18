@@ -9,7 +9,7 @@ export function loadAdvertiserSuccess(advertiser) {
 export function loadAdvertiser(id) {
     return function (dispatch) {
         return advertiserApi.get(id).then(advertiser => {
-            const response = apiResult.success(advertiser);
+            const response = apiResult.success(advertiser)
             dispatch(loadAdvertiserSuccess(response));
         }).catch(error => {
             throw (error);

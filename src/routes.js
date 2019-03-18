@@ -2,7 +2,7 @@ import React from 'react';
 // import {Route} from 'react-router';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import MainApp from './components/MainApp';
+import MainApp from './MainApp';
 import WalletsPage from './components/wallet/WalletsPage';
 
 export default (

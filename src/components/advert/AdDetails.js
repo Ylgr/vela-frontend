@@ -1,20 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import connect from "react-redux/es/connect/connect";
+import PropTypes from "prop-types";
 
-const AdDetails = (ads) => {
-    return(
-        <div>
-            {ads.map(ad =>
+class AdDetails extends React.Component {
+    render() {
+        return(
+            <div>
+                {this.props.adReports.map( (ad,index) =>
 
-                    <div>
-                        <h1>{ad.name}</h1>
-                        <h1>{ad.data}</h1>
-                        <h1>{ad.click}</h1>
+                    <div key = {index}>
+                        <p>{ad.name}</p>
+                        <p>{ad.data}</p>
+                        <p>{ad.click}</p>
                     </div>
-            )}
-        </div>
-    );
-
+                )}
+            </div>
+        )}
+}
+AdDetails.propTypes = {
+    adReports: PropTypes.array.isRequired
 };
 
-export default AdDetails;
+function mapStateToProps(state, ownProps) {
+    return {
+        adReports: state.adReports
+    };
+}
+export default connect(mapStateToProps)(AdDetails);

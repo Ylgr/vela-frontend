@@ -13,7 +13,7 @@ export function transferGas(data) {
         return gasTransferApi.transfer(data).then(gasWallet => {
             const response = apiResult.success(gasWallet);
             dispatch(transferGasSuccess(response));
-            dispatch(loadWallet(getSecondPart(data.sender))) // load this wallet again
+            //dispatch(loadWallet(getSecondPart(data.sender))) // load this wallet again
         }).catch(error => {
             throw (error);
         });
