@@ -23,12 +23,15 @@ export function loadAdSuccess(adReport) {
     return {type: types.LOAD_AD_SUCCESS, adReport}
 }
 
-export function loadAd(id){
+export function loadPresentingAdSuccess(presentingAd) {
+    return {type: types.LOAD_PRESENTING_AD_SUCCESS, presentingAd}
+}
+
+export function loadAd(id, isPresenting = false){
     return function (dispatch) {
         return adApi.get(id).then(adReport => {
             const response = apiResult.success(adReport);
-            console.log('loadAd: ',response);
-            dispatch(loadAdSuccess(response));
+            isPresenting ? dispatch(loadPresentingAdSuccess(response)) : dispatch(loadAdSuccess(response));
         }).catch(error => {
             throw (error);
         });

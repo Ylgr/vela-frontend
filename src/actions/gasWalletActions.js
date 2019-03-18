@@ -1,7 +1,7 @@
 import * as types from './actionTypes';
 import gasWalletApi from '../api/gasWalletApi';
 import apiResult from '../api/apiResult';
-
+import {loadAd} from './adActions';
 
 export function loadWalletsSuccess(gasWallets) {
     return {type: types.LOAD_WALLETS_SUCCESS, gasWallets}
@@ -50,4 +50,24 @@ export function addReport(adId,walletId){
             throw (error);
         });
     };
+}
+
+export function loadPreseningWalletSuccess(presentingWallet) {
+    return {type: types.LOAD_PRESENTING_WALLET_SUCCESS, presentingWallet}
+}
+
+export function loadPreseningAdAndWallet(){
+    return function (dispatch) {
+        gasWalletApi.getList().then(gasWallets => {
+            const responseWallets = apiResult.success(gasWallets);
+            const randomWallet = responseWallets[Math.floor(Math.random() * responseWallets.length)];
+            loadPreseningWalletSuccess(randomWallet);
+            const randomAd = randomWallet.reports[Math.floor(Math.random() * randomWallet.reports.length)];
+            dispatch(loadAd(getSecondPart(randomAd),true))
+        })
+    };
+}
+
+function getSecondPart(str) {
+    return str.split('#')[1];
 }
