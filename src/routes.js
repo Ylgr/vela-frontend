@@ -1,5 +1,4 @@
 import React from 'react';
-// import {Route} from 'react-router';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import MainApp from './MainApp';

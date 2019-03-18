@@ -52,20 +52,26 @@ export function addReport(adId,walletId){
     };
 }
 
-export function loadPreseningWalletSuccess(presentingWallet) {
+export function loadPresentingWalletSuccess(presentingWallet) {
     return {type: types.LOAD_PRESENTING_WALLET_SUCCESS, presentingWallet}
 }
 
-export function loadPreseningAdAndWallet(){
+export function loadPresentingAdAndWallet(){
     return function (dispatch) {
         gasWalletApi.getList().then(gasWallets => {
             const responseWallets = apiResult.success(gasWallets);
-            const randomWallet = responseWallets[Math.floor(Math.random() * responseWallets.length)];
-            loadPreseningWalletSuccess(randomWallet);
+            const randomWallet = loadWalletHaveAds(responseWallets);
+            dispatch(loadPresentingWalletSuccess(randomWallet));
             const randomAd = randomWallet.reports[Math.floor(Math.random() * randomWallet.reports.length)];
             dispatch(loadAd(getSecondPart(randomAd),true))
         })
     };
+}
+
+function loadWalletHaveAds(wallets) {
+    const randomWallet = wallets[Math.floor(Math.random() * wallets.length)];
+    if(typeof randomWallet.reports !== 'undefined') return randomWallet;
+    else return loadWalletHaveAds(wallets);
 }
 
 function getSecondPart(str) {

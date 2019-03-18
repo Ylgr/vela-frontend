@@ -9,7 +9,9 @@ import * as adActions from "../../actions/adActions";
 class AdManager extends React.Component {
 
     componentDidMount() {
-        this.props.gasWallet.reports.map(report => this.props.actions.loadAd((report+'').split('#')[1]))
+       if (typeof this.props.gasWallet.reports !== 'undefined') {
+           this.props.gasWallet.reports.map(report => this.props.actions.loadAd((report+'').split('#')[1]))
+       }
     }
 
     render() {
