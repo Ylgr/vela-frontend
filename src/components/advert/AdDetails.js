@@ -9,9 +9,9 @@ class AdDetails extends React.Component {
                 {this.props.adReports.map( (ad,index) =>
 
                     <div key = {index}>
-                        <p>{ad.name}</p>
-                        <p>{ad.data}</p>
-                        <p>{ad.click}</p>
+                        <p>Ad name: {ad.name}</p>
+                        <p>Ad data: {ad.data}</p>
+                        <p>Clicked: {ad.click}</p>
                     </div>
                 )}
             </div>

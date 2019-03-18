@@ -26,8 +26,8 @@ class WalletHome extends React.Component {
         let wallet = this.props.gasWallet;
         return(
             <div>
-                <h1>{wallet.id}</h1>
-                <h1>{wallet.amount}</h1>
+                <h1>Wallet Id: {wallet.id}</h1>
+                <h1>Vela amount: {wallet.amount}</h1>
                 <button onClick={this.openHistory}>Vela transaction history</button>
                 <Modal
                     isOpen={this.state.historyIsOpen}

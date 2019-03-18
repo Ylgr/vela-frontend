@@ -7,8 +7,8 @@ class MainApp extends React.Component {
 
     render() {
         return (
-            <div>
-                {this.props.advertiser.id ? <AdvertiserManager/> : <LoginAdvertiserForm/>}
+            <div className="section-fade-out pt-5" >
+            {this.props.advertiser.id ? <AdvertiserManager/> : <LoginAdvertiserForm/>}
             </div>
         );
     }
