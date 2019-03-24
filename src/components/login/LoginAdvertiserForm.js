@@ -4,6 +4,8 @@ import {bindActionCreators} from "redux";
 import * as advertiserActions from "../../actions/advertiserActions";
 import connect from "react-redux/es/connect/connect";
 
+import CreateAccount from "./CreateAccount";
+
 class LoginAdvertiserForm extends React.Component {
     constructor(props) {
         super(props);
@@ -28,13 +30,16 @@ class LoginAdvertiserForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Advertiser Id:
-                    <input type="text" value={this.state.value} onChange={this.handleChange} />
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        Advertiser Id:
+                        <input type="text" value={this.state.value} onChange={this.handleChange} />
+                    </label>
+                    <input type="submit" value="Submit" />
+                </form>
+                <CreateAccount/>
+            </div>
         );
     }
 }
