@@ -8,11 +8,13 @@ import connect from "react-redux/es/connect/connect";
 
 class AdUploader extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             isModalOpen: false,
+            category: 'SPORT',
             name: '',
+            contents: '',
             file: '',
             url: '',
             isActive: false
@@ -24,7 +26,8 @@ class AdUploader extends React.Component {
         this.handleChangeName = this.handleChangeName.bind(this);
         this.handleChangeUrl = this.handleChangeUrl.bind(this);
         this.handleChangeIsActive = this.handleChangeIsActive.bind(this);
-
+        this.handleChangeCategory = this.handleChangeCategory.bind(this);
+        this.handleChangeContents = this.handleChangeContents.bind(this);
     }
 
     handleChangeName(input) {
@@ -37,6 +40,14 @@ class AdUploader extends React.Component {
 
     handleChangeIsActive(input) {
         this.setState({isActive: input.target.value});
+    }
+
+    handleChangeCategory(input) {
+        this.setState({category: input.target.value});
+    }
+
+    handleChangeContents(input) {
+        this.setState({contents: input.target.value});
     }
 
     openModal(){
@@ -64,6 +75,8 @@ class AdUploader extends React.Component {
         {
             "id": id,
             "name": this.state.name,
+            "contents": "Aliquip commodo.",
+            "category": this.state.category,
             "data": this.state.file.base64,
             "isActive": this.state.isActive,
             "url": this.state.url
@@ -87,8 +100,23 @@ class AdUploader extends React.Component {
                     <button onClick={this.closeModal}>Close</button>
                     <button onClick={this.closeModalAndSubmit}>Submit</button>
                     <label>
+                        Category:
+                        <select value={this.state.category} onChange={this.handleChangeCategory}>
+                            <option value="SPORT">Sport</option>
+                            <option value="FASHION">Fashion</option>
+                            <option value="BEAUTY">Beauty</option>
+                            <option value="EVENT">Event</option>
+                            <option value="TECHNOLOGY">Technology</option>
+                            <option value="DECORATE">Decorate</option>
+                        </select>
+                    </label>
+                    <label>
                         Name:
                         <input type="text" value={this.state.name} onChange={this.handleChangeName} />
+                    </label>
+                    <label>
+                        Contents:
+                        <textarea type="text" value={this.state.contents} onChange={this.handleChangeContents} />
                     </label>
                     <label>
                         Url:

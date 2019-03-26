@@ -91,7 +91,7 @@ class CreateAccount extends React.Component {
                                onChange={this.handleChange}/>
                     </div>
                     <div className="modal-footer py-1">
-                        <button class="btn btn-primary" onClick={this.submitCreateRequest}>Create</button>
+                        <button className="btn btn-primary" onClick={this.submitCreateRequest}>Create</button>
                         <button type="button" className="btn btn-secondary" onClick={this.closeCreateRequest}>Close
                         </button>
                     </div>
