@@ -18,6 +18,21 @@ export function loadWallets() {
     };
 }
 
+export function createWalletSuccess(gasWallet) {
+    return {type: types.CREATE_WALLET_SUCCESS, gasWallet}
+}
+
+export function createWallet(data) {
+    return function (dispatch) {
+        return gasWalletApi.create(data).then(gasWallet => {
+            const response = apiResult.success(gasWallet);
+            //dispatch(createWalletSuccess(response));
+        }).catch(error => {
+            throw (error);
+        });
+    };
+}
+
 export function loadWalletSuccess(gasWallet) {
     return {type: types.LOAD_WALLET_SUCCESS, gasWallet}
 }

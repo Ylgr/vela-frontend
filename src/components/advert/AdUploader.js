@@ -12,7 +12,6 @@ class AdUploader extends React.Component {
         super();
         this.state = {
             isModalOpen: false,
-            id: '',
             name: '',
             file: '',
             url: '',
@@ -22,15 +21,10 @@ class AdUploader extends React.Component {
         this.closeModal = this.closeModal.bind(this);
         this.closeModalAndSubmit = this.closeModalAndSubmit.bind(this);
         this.getFiles = this.getFiles.bind(this);
-        this.handleChangeId = this.handleChangeId.bind(this);
         this.handleChangeName = this.handleChangeName.bind(this);
         this.handleChangeUrl = this.handleChangeUrl.bind(this);
         this.handleChangeIsActive = this.handleChangeIsActive.bind(this);
 
-    }
-
-    handleChangeId(input) {
-        this.setState({id: input.target.value});
     }
 
     handleChangeName(input) {
@@ -53,11 +47,22 @@ class AdUploader extends React.Component {
         this.setState({ isModalOpen: false })
     }
 
+    makeid(length) {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for (var i = 0; i < length; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
+    }
+
     closeModalAndSubmit(){
         this.setState({ isModalOpen: false });
+        const id = this.makeid(20);
         const res =
         {
-            "id": this.state.id,
+            "id": id,
             "name": this.state.name,
             "data": this.state.file.base64,
             "isActive": this.state.isActive,
@@ -81,10 +86,6 @@ class AdUploader extends React.Component {
                     contentLabel="Example Modal">
                     <button onClick={this.closeModal}>Close</button>
                     <button onClick={this.closeModalAndSubmit}>Submit</button>
-                    <label>
-                        Id:
-                        <input type="text" value={this.state.id} onChange={this.handleChangeId} />
-                    </label>
                     <label>
                         Name:
                         <input type="text" value={this.state.name} onChange={this.handleChangeName} />

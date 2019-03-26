@@ -25,7 +25,7 @@ export function createAdvertiser(hashRes) {
     return function (dispatch) {
         return advertiserApi.create(hashRes).then(advertiser => {
             const response = apiResult.success(advertiser);
-            dispatch(createAdvertiserSuccess(response));
+            //dispatch(createAdvertiserSuccess(response));
         }).catch(error => {
             throw (error);
         });

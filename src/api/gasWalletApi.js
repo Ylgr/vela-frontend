@@ -12,6 +12,10 @@ class GasWalletApi extends Ajax{
     addReport (data) {
         return this.ajax().post('api/AddReport', JSON.stringify(data), {headers: {'Content-Type': 'application/json'}})
     }
+
+    create (data) {
+        return this.ajax().post('api/Gas', JSON.stringify(data), {headers: {'Content-Type': 'application/json'}})
+    }
 }
 
 const gasWalletApi = new GasWalletApi();
