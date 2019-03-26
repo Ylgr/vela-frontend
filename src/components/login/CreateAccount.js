@@ -7,11 +7,12 @@ import React from "react";
 import Modal from "react-modal";
 import * as randomWords from "random-words";
 import sha256 from "crypto-js/sha256";
+import ModalStyles from "../ModalStyles";
 
 class CreateAccount extends React.Component {
 
-    constructor(){
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             privateKey: '',
             name: '',
@@ -68,20 +69,32 @@ class CreateAccount extends React.Component {
     }
 
     render() {
-        return(
+        return (
             <div>
-                <button onClick={this.createAccount}>Create account</button>
+                <button className="btn btn-outline-primary" onClick={this.createAccount}>Create account</button>
                 <Modal
                     isOpen={this.state.isRequestName}
                     onRequestClose={this.closeCreateRequest}
                     ariaHideApp={false}
-                    contentLabel="Example Modal">
-                    <button onClick={this.closeCreateRequest}>close</button>
-                    <h4>Your private key: </h4>
-                    <p>{this.state.privateKey}</p>
-                    <h4>Please typing your name: </h4>
-                    <input type="text" value={this.state.name} onChange={this.handleChange} />
-                    <button onClick={this.submitCreateRequest}>Submit</button>
+                    style={ModalStyles}
+                    contentLabel="Create Account">
+                    <div className="modal-header py-1">
+                        <h5 className="modal-title">Create account</h5>
+                        <button type="button" className="close" onClick={this.closeCreateRequest}><span>×</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        <h5>Your private key: </h5>
+                        <p>{this.state.privateKey}</p>
+                        <h5>Please typing your name: </h5>
+                        <input type="text" className="form-control" value={this.state.name}
+                               onChange={this.handleChange}/>
+                    </div>
+                    <div className="modal-footer py-1">
+                        <button class="btn btn-primary" onClick={this.submitCreateRequest}>Create</button>
+                        <button type="button" className="btn btn-secondary" onClick={this.closeCreateRequest}>Close
+                        </button>
+                    </div>
                 </Modal>
             </div>
         )

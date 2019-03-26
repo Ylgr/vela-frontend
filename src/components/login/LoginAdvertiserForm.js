@@ -32,13 +32,19 @@ class LoginAdvertiserForm extends React.Component {
     render() {
         return (
             <div>
+                <br/>
                 <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Advertiser Id:
-                        <input type="text" value={this.state.value} onChange={this.handleChange} />
-                    </label>
-                    <input type="submit" value="Submit" />
+                    <h4>
+                        Login by your private key:
+                    </h4>
+                    <br/>
+                    <input type="input" className="form-control" value={this.state.value} onChange={this.handleChange} />
+                    <br/>
+                    <input type="submit" value="Login" className="btn btn-primary"/>
                 </form>
+                <br/>
+                <h4> Or </h4>
+                <br/>
                 <CreateAccount/>
             </div>
         );
