@@ -2,20 +2,15 @@ import React from 'react';
 import LoginAdvertiserForm from './components/login/LoginAdvertiserForm';
 import AdvertiserManager from './components/AdvertiserManager';
 import connect from "react-redux/es/connect/connect";
+import './styles/reduction.scss';
 
 class MainApp extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className="container">
-                    <div className="row d-flex justify-content-center">
-                        <div className="menu-content pb-60 col-lg-10">
-                            <div className="title text-center">
+            <div className="cr-app bg-light">
+                <div className="cr-content container-fluid">
                                 {this.props.advertiser.id ? <AdvertiserManager/> : <LoginAdvertiserForm/>}
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         );

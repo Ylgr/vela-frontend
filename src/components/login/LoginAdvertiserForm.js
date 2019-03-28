@@ -5,6 +5,7 @@ import * as advertiserActions from "../../actions/advertiserActions";
 import connect from "react-redux/es/connect/connect";
 import CreateAccount from "./CreateAccount";
 import sha256 from "crypto-js/sha256";
+import { Card, Col, Row } from 'reactstrap';
 
 class LoginAdvertiserForm extends React.Component {
     constructor(props) {
@@ -31,22 +32,31 @@ class LoginAdvertiserForm extends React.Component {
 
     render() {
         return (
-            <div>
-                <br/>
-                <form onSubmit={this.handleSubmit}>
-                    <h4>
-                        Login by your private key:
-                    </h4>
-                    <br/>
-                    <input type="input" className="form-control" value={this.state.value} onChange={this.handleChange} />
-                    <br/>
-                    <input type="submit" value="Login" className="btn btn-primary"/>
-                </form>
-                <br/>
-                <h4> Or </h4>
-                <br/>
-                <CreateAccount/>
-            </div>
+            <Row
+                style={{
+                    height: '100vh',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}>
+                <Col md={6} lg={4}>
+                    <Card body>
+                        <form onSubmit={this.handleSubmit}>
+                            <h5>
+                                Login by your private key:
+                            </h5>
+                            <br/>
+                            <textarea type="input" className="form-control" value={this.state.value} onChange={this.handleChange} />
+                            <br/>
+                            <button type="submit"
+                                    className="bg-gradient-theme-left border-0 btn btn-secondary btn-lg btn-block">Login
+                            </button>
+                        </form>
+                        <br/>
+                        <p> Or </p>
+                        <CreateAccount/>
+                    </Card>
+                </Col>
+            </Row>
         );
     }
 }

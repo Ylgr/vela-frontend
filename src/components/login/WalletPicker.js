@@ -3,6 +3,9 @@ import connect from "react-redux/es/connect/connect";
 import PropTypes from "prop-types";
 import {bindActionCreators} from "redux";
 import * as gasWalletActions from "../../actions/gasWalletActions";
+import WalletPickerDetail from "./WalletPickerDetail";
+
+// TODO Update query in Fabric to load amount wallets
 
 class WalletPicker extends React.Component {
 
@@ -28,12 +31,16 @@ class WalletPicker extends React.Component {
         return (
             <div>
                 <h3>Choose your wallet:</h3>
-                {advertiser.wallets.map(id => <button className="btn btn-secondary" onClick={() => this.walletOpened(id)} key = {this.getSecondPart(id)}>{this.getSecondPart(id)}</button>)}
+                {advertiser.wallets.map(id =>
+                        <WalletPickerDetail pick={() => this.walletOpened(id)} key={this.getSecondPart(id)}/>)
+                }
             </div>
+
+
         );
     }
 }
-
+//pick={() => this.walletOpened(id)}
 WalletPicker.propTypes = {
     actions: PropTypes.object.isRequired,
     advertiser: PropTypes.object.isRequired
