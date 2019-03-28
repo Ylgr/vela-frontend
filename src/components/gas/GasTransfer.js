@@ -52,7 +52,7 @@ class GasTransfer extends React.Component{
     render() {
         return(
             <div>
-                <button onClick={this.openModal}>Transfer Gas</button>
+                <button className="btn btn-warning" onClick={this.openModal}>Transfer Gas</button>
                 <Modal
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}

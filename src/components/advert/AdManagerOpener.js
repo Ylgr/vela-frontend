@@ -21,7 +21,7 @@ class AdManagerOpener extends React.Component {
     render() {
         return(
             <div>
-                <button onClick={this.openOrCloseManager}>Ad Manager</button>
+                <button className="btn btn-info" onClick={this.openOrCloseManager}>Ad Manager</button>
                 {this.state.isOpenManager?<AdManager/>:<WalletHome/>}
             </div>
         )

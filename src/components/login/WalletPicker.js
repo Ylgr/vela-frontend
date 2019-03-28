@@ -28,7 +28,7 @@ class WalletPicker extends React.Component {
         return (
             <div>
                 <h3>Choose your wallet:</h3>
-                {advertiser.wallets.map(id => <button onClick={() => this.walletOpened(id)} key = {this.getSecondPart(id)}>{this.getSecondPart(id)}</button>)}
+                {advertiser.wallets.map(id => <button className="btn btn-secondary" onClick={() => this.walletOpened(id)} key = {this.getSecondPart(id)}>{this.getSecondPart(id)}</button>)}
             </div>
         );
     }

@@ -29,7 +29,7 @@ class WalletHome extends React.Component {
             <div>
                 <h1>Wallet Id: {wallet.id}</h1>
                 <h1>Vela amount: {wallet.amount}</h1>
-                <button onClick={this.openHistory}>Vela transaction history</button>
+                <button className="btn btn-info" onClick={this.openHistory}>Vela transaction history</button>
                 <Modal
                     isOpen={this.state.historyIsOpen}
                     onRequestClose={this.closeHistory}

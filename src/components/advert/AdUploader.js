@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Modal from 'react-bootstrap-modal';
+import Modal from 'react-bootstrap4-modal';
 import FileBase64 from 'react-file-base64';
 import {bindActionCreators} from "redux";
 import * as adActions from "../../actions/adActions";
 import connect from "react-redux/es/connect/connect";
-import ModalStyles from "../ModalStyles";
 
 class AdUploader extends React.Component {
 
@@ -39,8 +38,10 @@ class AdUploader extends React.Component {
         this.setState({url: input.target.value});
     }
 
-    handleChangeIsActive(input) {
-        this.setState({isActive: input.target.value});
+    handleChangeIsActive() {
+        this.state.isActive?
+        this.setState({isActive: false}):
+        this.setState({isActive: true});
     }
 
     handleChangeCategory(input) {
@@ -51,12 +52,12 @@ class AdUploader extends React.Component {
         this.setState({contents: input.target.value});
     }
 
-    openModal(){
-        this.setState({ isModalOpen: true })
+    openModal() {
+        this.setState({isModalOpen: true})
     }
 
-    closeModal(){
-        this.setState({ isModalOpen: false })
+    closeModal() {
+        this.setState({isModalOpen: false})
     }
 
     makeid(length) {
@@ -69,135 +70,83 @@ class AdUploader extends React.Component {
         return text;
     }
 
-    closeModalAndSubmit(){
-        this.setState({ isModalOpen: false });
+    closeModalAndSubmit() {
+        this.setState({isModalOpen: false});
         const id = this.makeid(20);
         const res =
-        {
-            "id": id,
-            "name": this.state.name,
-            "contents": "Aliquip commodo.",
-            "category": this.state.category,
-            "data": this.state.file.base64,
-            "isActive": this.state.isActive,
-            "url": this.state.url
-        };
-        this.props.actions.createAd(res,this.props.gasWallet.id)
+            {
+                "id": id,
+                "name": this.state.name,
+                "contents": "Aliquip commodo.",
+                "category": this.state.category,
+                "data": this.state.file.base64,
+                "isActive": this.state.isActive,
+                "url": this.state.url
+            };
+        this.props.actions.createAd(res, this.props.gasWallet.id)
     }
 
-    getFiles(file){
-        this.setState({ file: file });
+    getFiles(file) {
+        this.setState({file: file});
     }
 
     render() {
-        console.log(this.state.isModalOpen);
-        return(
+        return (
             <div>
-                <button onClick={this.openModal}>Create new Ad</button>
-
-                <Modal show={this.state.isModalOpen}
-                       onHide={this.closeModal}
-                       aria-labelledby="AdUploader">
-                    <Modal.Header closeButton>
-                        <Modal.Title>Upload Ad</Modal.Title>
-                    </Modal.Header>
-
-                    <Modal.Body>
-                        <div className="row pi-draggable">
-                            <div className="col-md-8">
-                                <input placeholder="Name" type="text" value={this.state.name} onChange={this.handleChangeName} required/>
+                <button className="btn btn-primary" onClick={this.openModal}>Create new Ad</button>
+                <Modal visible={this.state.isModalOpen} onClickBackdrop={this.openModal}>
+                    <div className="modal-header">
+                        <h5 className="modal-title">Upload Ad</h5>
+                    </div>
+                    <div className="modal-body">
+                        <div className="row">
+                            <div className="col-md-8 my-2">
+                                <input type="text" value={this.state.name} onChange={this.handleChangeName}
+                                       className="form-control" placeholder="Name"/>
                             </div>
                             <div className="col-md-4">
-                                <label>
-                                    Category:
-                                    <select value={this.state.category} onChange={this.handleChangeCategory}>
-                                        <option className="option" value="SPORT">Sport</option>
-                                        <option className="option" value="FASHION">Fashion</option>
-                                        <option className="option" value="BEAUTY">Beauty</option>
-                                        <option className="option" value="EVENT">Event</option>
-                                        <option className="option" value="TECHNOLOGY">Technology</option>
-                                        <option className="option" value="DECORATE">Decorate</option>
-                                    </select>
+                                <label> Category: <select value={this.state.category}
+                                                          onChange={this.handleChangeCategory}>
+                                    <option className="option" value="SPORT">Sport</option>
+                                    <option className="option" value="FASHION">Fashion</option>
+                                    <option className="option" value="BEAUTY">Beauty</option>
+                                    <option className="option" value="EVENT">Event</option>
+                                    <option className="option" value="TECHNOLOGY">Technology</option>
+                                    <option className="option" value="DECORATE">Decorate</option>
+                                </select>
                                 </label>
                             </div>
-                            <br/>
-                            <label>
-                                Url:
-                                <input type="text" value={this.state.url} onChange={this.handleChangeUrl} />
-                            </label>
-                            <br/>
-                            <label>
-                                Contents:
-                                <textarea type="text" value={this.state.contents} onChange={this.handleChangeContents} />
-                            </label>
-                            <br/>
-                            <FileBase64
-                                multiple={ false }
-                                onDone={ this.getFiles } />
-                            <label>
-                                Active:
-                                <input type="text" value={this.state.isActive} onChange={this.handleChangeIsActive} />
-                            </label>
                         </div>
-                    </Modal.Body>
-                    <Modal.Footer>
+                        <label>Url: </label>
+                        <input type="text" className="form-control" value={this.state.url} onChange={this.handleChangeUrl} placeholder="Url"/>
+
+                        <label>Contents: </label>
+                        <textarea type="text" className="form-control" value={this.state.contents} onChange={this.handleChangeContents}/>
+                        <div className="row">
+                            <div className="col-md-6 my-2">
+                        <FileBase64
+                                multiple={false}
+                                onDone={this.getFiles}/>
+                            </div>
+                            <div className="col-md-6 my-2">
+                            <label>
+                                <div className="switch-wrap d-flex justify-content-between">
+                                    <p>Activated:</p>
+                                    <input className="my-1" type="checkbox" checked={this.state.isActive} onChange={this.handleChangeIsActive} />
+                                </div>
+                            </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="modal-footer">
                         <button className="btn btn-primary" onClick={this.closeModalAndSubmit}>Upload</button>
                         <button type="button" className="btn btn-secondary" onClick={this.closeModal}>Close
                         </button>
-                    </Modal.Footer>
-
-
+                    </div>
                 </Modal>
             </div>
-        )
+        );
     }
-
-    // render() {
-    //     return(
-    //         <div>
-    //             <button onClick={this.openModal}>Create new Ad</button>
-    //             <Modal
-    //                 isOpen={this.state.isModalOpen}
-    //                 onRequestClose={this.closeModal}
-    //                 ariaHideApp={false}
-    //                 contentLabel="Example Modal">
-    //                 <button onClick={this.closeModal}>Close</button>
-    //                 <button onClick={this.closeModalAndSubmit}>Submit</button>
-    //                 <label>
-    //                     Category:
-    //                     <select value={this.state.category} onChange={this.handleChangeCategory}>
-    //                         <option value="SPORT">Sport</option>
-    //                         <option value="FASHION">Fashion</option>
-    //                         <option value="BEAUTY">Beauty</option>
-    //                         <option value="EVENT">Event</option>
-    //                         <option value="TECHNOLOGY">Technology</option>
-    //                         <option value="DECORATE">Decorate</option>
-    //                     </select>
-    //                 </label>
-    //                 <label>
-    //                     Name:
-    //                     <input type="text" value={this.state.name} onChange={this.handleChangeName} />
-    //                 </label>
-    //                 <label>
-    //                     Contents:
-    //                     <textarea type="text" value={this.state.contents} onChange={this.handleChangeContents} />
-    //                 </label>
-    //                 <label>
-    //                     Url:
-    //                     <input type="text" value={this.state.url} onChange={this.handleChangeUrl} />
-    //                 </label>
-    //
-    //                 <FileBase64
-    //                     multiple={ false }
-    //                     onDone={ this.getFiles } />
-    //                 <label>
-    //                     Active:
-    //                     <input type="text" value={this.state.isActive} onChange={this.handleChangeIsActive} />
-    //                 </label>
-    //             </Modal>
-    //         </div>
-    //     )
-    // }
 }
 
 AdUploader.propTypes = {
