@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import {bindActionCreators} from "redux";
 import * as advertiserActions from "../../actions/advertiserActions";
-import * as gasWalletActions from "../../actions/gasWalletActions";
 import connect from "react-redux/es/connect/connect";
 import React from "react";
 import Modal from "react-modal";
@@ -42,19 +41,15 @@ class CreateAccount extends React.Component {
         this.setState({isRequestName: false});
         const hashKey = sha256(this.state.privateKey).toString();
         const walletId = this.makeid(15);
-        const res = {
+        const req = {
             "id": hashKey,
             "name": this.state.name,
             "wallets": [
                 "resource:org.vela.gas.Gas#" + walletId
             ]
         };
-        console.log(res);
-        this.props.actions.createAdvertiser(res);
-        const resWallet = {
-            "id": walletId
-        };
-        this.props.walletActions.createWallet(resWallet)
+        console.log(req);
+        this.props.actions.createAdvertiser(req,walletId);
     }
 
     closeCreateRequest() {
@@ -102,14 +97,12 @@ class CreateAccount extends React.Component {
 }
 
 CreateAccount.propTypes = {
-    actions: PropTypes.object.isRequired,
-    walletActions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired
 };
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(advertiserActions, dispatch),
-        walletActions: bindActionCreators(gasWalletActions, dispatch)
+        actions: bindActionCreators(advertiserActions, dispatch)
     };
 }
 

@@ -3,6 +3,7 @@ import GasTransfer from "../gas/GasTransfer";
 import WalletHistory from "./WalletHistory";
 import connect from "react-redux/es/connect/connect";
 import Modal from 'react-modal';
+import ModalStyles from "../ModalStyles";
 
 class WalletHome extends React.Component {
     constructor(props) {
@@ -33,9 +34,11 @@ class WalletHome extends React.Component {
                     isOpen={this.state.historyIsOpen}
                     onRequestClose={this.closeHistory}
                     ariaHideApp={false}
+                    style={ModalStyles}
                     contentLabel="Example Modal">
+                    <h4>Transaction History</h4>
                     <button onClick={this.closeHistory}>close</button>
-                <WalletHistory logs={wallet.transactions}/>
+                    <WalletHistory logs={wallet.transactions}/>
                 </Modal>
                 <GasTransfer/>
             </div>

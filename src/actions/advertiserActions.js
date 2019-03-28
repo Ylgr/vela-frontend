@@ -1,6 +1,7 @@
 import * as types from "./actionTypes";
 import advertiserApi from "../api/advertiserApi";
 import apiResult from "../api/apiResult";
+import { createWallet } from "./gasWalletActions";
 
 export function loadAdvertiserSuccess(advertiser) {
     return {type: types.LOAD_ADVERTISER_SUCCESS, advertiser}
@@ -21,11 +22,16 @@ export function createAdvertiserSuccess(advertiser) {
     return {type: types.CREATE_ADVERTISER_SUCCESS, advertiser}
 }
 
-export function createAdvertiser(hashRes) {
+export function createAdvertiser(hashReq,walletId) {
     return function (dispatch) {
-        return advertiserApi.create(hashRes).then(advertiser => {
+        return advertiserApi.create(hashReq).then(advertiser => {
+            const resWallet = {
+                "id": walletId
+            };
+
             const response = apiResult.success(advertiser);
-            //dispatch(createAdvertiserSuccess(response));
+            dispatch(createAdvertiserSuccess(response));
+            dispatch(createWallet(resWallet));
         }).catch(error => {
             throw (error);
         });

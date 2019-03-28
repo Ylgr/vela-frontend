@@ -4,6 +4,7 @@ import {bindActionCreators} from "redux";
 import * as gasTransferAction from "../../actions/gasTransactionActions";
 import connect from "react-redux/es/connect/connect";
 import Modal from 'react-modal';
+import ModalStyles from "../ModalStyles";
 
 class GasTransfer extends React.Component{
 
@@ -56,11 +57,13 @@ class GasTransfer extends React.Component{
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
                     ariaHideApp={false}
+                    style={ModalStyles}
                     contentLabel="Example Modal">
                     <button onClick={this.closeModal}>close</button>
                     <form onSubmit={this.handleSubmit}>
                         <div className="modal-body">
                             <label>Receiver: <input type="text" value={this.state.value} onChange={this.handleReceiverChange} /></label>
+                            <br/>
                             <label>Amount:   <input type="text" value={this.state.value} onChange={this.handleAmountChange} /></label>
                         </div>
                         <div className="modal-footer">
