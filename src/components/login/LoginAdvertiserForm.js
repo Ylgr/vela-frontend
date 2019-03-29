@@ -52,8 +52,10 @@ class LoginAdvertiserForm extends React.Component {
                             </button>
                         </form>
                         <br/>
-                        <p> Or </p>
-                        <CreateAccount/>
+                        <div className="text-center pt-1">
+                            <p> Or </p>
+                            <CreateAccount/>
+                        </div>
                     </Card>
                 </Col>
             </Row>

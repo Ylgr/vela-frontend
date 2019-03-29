@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import {bindActionCreators} from "redux";
 import * as gasWalletActions from "../../actions/gasWalletActions";
 import WalletPickerDetail from "./WalletPickerDetail";
+import {Card, CardBody, CardTitle} from "reactstrap";
 
 // TODO Update query in Fabric to load amount wallets
 
@@ -11,19 +12,15 @@ class WalletPicker extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            walletOpened: {},
-        };
         this.walletOpened = this.walletOpened.bind(this);
     }
 
     walletOpened(id) {
-        this.state.walletOpened = this.getSecondPart(id);
-        this.props.actions.loadWallet(this.state.walletOpened)
+        this.props.actions.loadWallet(id);
     }
 
     getSecondPart(str) {
-        return (str+'').split('#')[1];
+        return (str + '').split('#')[1];
     }
 
     render() {
@@ -31,8 +28,25 @@ class WalletPicker extends React.Component {
         return (
             <div>
                 <h3>Choose your wallet:</h3>
-                {advertiser.wallets.map(id =>
-                        <WalletPickerDetail pick={() => this.walletOpened(id)} key={this.getSecondPart(id)}/>)
+                {advertiser.wallets.map(rawId => this.getSecondPart(rawId)).map(id =>
+                    <div className="mb-3 col-12 col-sm-6 col-md-6" key={id}>
+                        <Card
+                            inverse
+                            className="border-0 bg-gradient-theme-right card text-white"
+                            style={{height: 200}}>
+                            <CardBody className="d-flex flex-column justify-content-start align-items-start card-body">
+                                <CardTitle>Address: {id}</CardTitle>
+                                <p className="card-text">Name: coming soon</p>
+                            </CardBody>
+                            <CardBody className="d-flex justify-content-between align-items-center card-body">
+                                <p className="card-text">Vela amount: coming soon</p>
+                                <button className="btn btn-outline-light"
+                                        onClick={() => this.walletOpened(id)}>Click
+                                </button>
+                            </CardBody>
+                        </Card>
+                    </div>
+                )
                 }
             </div>
 
@@ -40,6 +54,7 @@ class WalletPicker extends React.Component {
         );
     }
 }
+
 //pick={() => this.walletOpened(id)}
 WalletPicker.propTypes = {
     actions: PropTypes.object.isRequired,
