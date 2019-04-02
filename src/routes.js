@@ -8,7 +8,8 @@ export default (
     <BrowserRouter>
         <div>
             <Switch>
-                <Route exact path="/" component={MainApp}/>
+                <MainApp exact path="/" />
+                <MainApp exact path="/ad-manager" page = 'adManager'/>
                 <Route exact path="/ads" component={AdAppearManager}/>
             </Switch>
         </div>

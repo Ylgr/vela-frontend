@@ -71,7 +71,7 @@ export function loadPresentingWalletSuccess(presentingWallet) {
     return {type: types.LOAD_PRESENTING_WALLET_SUCCESS, presentingWallet}
 }
 
-export function loadPresentingAdAndWallet(){
+export function loadRandomPresentingAdAndWallet(){
     return function (dispatch) {
         gasWalletApi.getList().then(gasWallets => {
             const responseWallets = apiResult.success(gasWallets);

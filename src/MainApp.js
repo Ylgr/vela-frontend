@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from "prop-types";
+
 import LoginAdvertiserForm from './components/login/LoginAdvertiserForm';
 import AdvertiserManager from './components/AdvertiserManager';
 import connect from "react-redux/es/connect/connect";
@@ -10,12 +12,16 @@ class MainApp extends React.Component {
         return (
             <div className="cr-app bg-light">
                 <div className="cr-content container-fluid">
-                                {this.props.advertiser.id ? <AdvertiserManager/> : <LoginAdvertiserForm/>}
+                                {this.props.advertiser.id ? <AdvertiserManager page={this.props.page}/> : <LoginAdvertiserForm/>}
                 </div>
             </div>
         );
     }
 }
+
+AdvertiserManager.propTypes = {
+    page: PropTypes.string
+};
 
 function mapStateToProps(state, ownProps) {
     return {

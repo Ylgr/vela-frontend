@@ -20,7 +20,7 @@ class AdAppearManager extends React.Component {
     }
 
     componentDidMount() {
-        this.props.actions.loadPresentingAdAndWallet()
+        this.props.actions.loadRandomPresentingAdAndWallet()
     }
 
     openModal() {

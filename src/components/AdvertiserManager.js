@@ -1,12 +1,23 @@
 import React from "react";
+import PropTypes from "prop-types";
 import connect from "react-redux/es/connect/connect";
 import WalletPicker from "./login/WalletPicker";
-import AdManagerOpener from "./advert/AdManagerOpener";
+import AdManagerOpener from "./adManagement/AdManagerOpener";
 import SideBar from "./layout/SideBar";
-import TopBar from "./layout/TopBar";
+import Header from "./layout/Header";
+import AdArticleManager from "./adArticle/AdArticleManager";
 
 
 class AdvertiserManager extends React.Component {
+
+    swichPage (page) {
+        switch (page) {
+            case 'adManager':
+                return(<AdManagerOpener/>);
+            default:
+                return(<AdArticleManager/>);
+        }
+    }
 
     render(){
         return(
@@ -15,8 +26,8 @@ class AdvertiserManager extends React.Component {
                     <div>
                         <SideBar/>
                         <div className="cr-content container-fluid">
-                            <TopBar/>
-                            <AdManagerOpener/>
+                            <Header/>
+                            {this.swichPage(this.props.page)}
                         </div>
                     </div> :
                     <WalletPicker/>}
@@ -24,6 +35,11 @@ class AdvertiserManager extends React.Component {
         )
     }
 }
+
+AdvertiserManager.propTypes = {
+    gasWallet: PropTypes.object.isRequired,
+    page: PropTypes.object
+};
 
 function mapStateToProps(state, ownProps) {
     return {
