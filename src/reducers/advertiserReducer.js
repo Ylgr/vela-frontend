@@ -5,6 +5,8 @@ export default function AdvertiserReducer(state = initialState.advertiser, actio
     switch (action.type) {
         case type.LOAD_ADVERTISER_SUCCESS:
             return action.advertiser;
+        case type.CREATE_ADVERTISER_SUCCESS:
+            return action.advertiser;
         default:
             return state;
     }

@@ -12,7 +12,7 @@ class MainApp extends React.Component {
         return (
             <div className="cr-app bg-light">
                 <div className="cr-content container-fluid">
-                                {this.props.advertiser.id ? <AdvertiserManager page={this.props.page}/> : <LoginAdvertiserForm/>}
+                                {this.props.advertiser.id ? <AdvertiserManager page={this.props.page} locationParam={this.props.computedMatch.params.location}/> : <LoginAdvertiserForm/>}
                 </div>
             </div>
         );

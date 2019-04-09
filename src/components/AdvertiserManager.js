@@ -2,20 +2,33 @@ import React from "react";
 import PropTypes from "prop-types";
 import connect from "react-redux/es/connect/connect";
 import WalletPicker from "./login/WalletPicker";
-import AdManagerOpener from "./adManagement/AdManagerOpener";
+import AdManager from "./adManagement/AdManager";
 import SideBar from "./layout/SideBar";
 import Header from "./layout/Header";
 import AdArticleManager from "./adArticle/AdArticleManager";
-
+import WalletHome from "./wallet/WalletHome";
 
 class AdvertiserManager extends React.Component {
 
     swichPage (page) {
-        switch (page) {
-            case 'adManager':
-                return(<AdManagerOpener/>);
-            default:
-                return(<AdArticleManager/>);
+        if(typeof this.props.locationParam !== 'undefined'){
+            switch (this.props.locationParam) {
+                case 'all':
+                    return (<AdArticleManager/>);
+                case 'beauty':
+                    return (<AdArticleManager/>);
+                default:
+                    return (<AdArticleManager/>);
+            }
+        }else {
+            switch (page) {
+                case 'adManager':
+                    return (<AdManager/>);
+                case 'walletHome':
+                    return (<WalletHome/>);
+                default:
+                    return (<AdArticleManager/>);
+            }
         }
     }
 
@@ -38,7 +51,8 @@ class AdvertiserManager extends React.Component {
 
 AdvertiserManager.propTypes = {
     gasWallet: PropTypes.object.isRequired,
-    page: PropTypes.object
+    page: PropTypes.string,
+    locationParam: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {
