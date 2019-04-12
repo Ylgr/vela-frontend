@@ -4,6 +4,10 @@ import WalletHistory from "./WalletHistory";
 import connect from "react-redux/es/connect/connect";
 import Modal from 'react-modal';
 import ModalStyles from "../ModalStyles";
+import {Card, CardBody, CardHeader, Col, Row} from "reactstrap";
+import Page from "../layout/Page";
+import IconWidget from '../layout/IconWidget';
+import { MdRadio } from 'react-icons/md';
 
 class WalletHome extends React.Component {
     constructor(props) {
@@ -26,22 +30,31 @@ class WalletHome extends React.Component {
     render(){
         let wallet = this.props.gasWallet;
         return(
-            <div>
-                <h1>Wallet Id: {wallet.id}</h1>
-                <h1>Vela amount: {wallet.amount}</h1>
-                <button className="btn btn-info" onClick={this.openHistory}>Vela transaction history</button>
-                <Modal
-                    isOpen={this.state.historyIsOpen}
-                    onRequestClose={this.closeHistory}
-                    ariaHideApp={false}
-                    style={ModalStyles}
-                    contentLabel="Example Modal">
-                    <h4>Transaction History</h4>
-                    <button onClick={this.closeHistory}>close</button>
-                    <WalletHistory logs={wallet.transactions}/>
-                </Modal>
-                <GasTransfer/>
-            </div>
+            <Page
+                className="ButtonPage"
+                title="Fund"
+                breadcrumbs={[{ name: 'Fund', active: true }]}
+            >
+                    <Col lg={4} md={6} sm={6} xs={12} className="mb-3">
+                        <IconWidget
+                            bgColor='info'
+                            icon= {MdRadio}
+                            title={'Wallet Id: ' + wallet.id}
+                            subtitle={'VelaToken amount: ' + wallet.amount}
+                        />
+                    </Col>
+                    <GasTransfer/>
+                <Row>
+                    <Col md="10" sm="10" xs="10">
+                        <Card>
+                            <CardHeader>Transactions history</CardHeader>
+                            <CardBody>
+                                <WalletHistory logs={wallet.transactions}/>
+                            </CardBody>
+                        </Card>
+                    </Col>
+                </Row>
+            </Page>
         )
     }
 }

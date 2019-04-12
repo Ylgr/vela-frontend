@@ -93,7 +93,7 @@ class AdUploader extends React.Component {
     render() {
         return (
             <div>
-                <button className="btn btn-primary" onClick={this.openModal}>Create new Ad</button>
+                <button className="btn btn-primary" onClick={this.openModal}>Create a new one</button>
                 <Modal visible={this.state.isModalOpen} onClickBackdrop={this.openModal}>
                     <div className="modal-header">
                         <h5 className="modal-title">Upload Ad</h5>
