@@ -13,9 +13,9 @@ import {
     ListGroupItem,
     Row,
 } from 'reactstrap';
-import sidebarBgImage from '../../../public/images/sidebar.jpg';
 import AdArticleDetails from "./AdArticleDetails";
 import PropTypes from "prop-types";
+import Page from "../layout/Page";
 
 class AdArticleManager extends React.Component {
     constructor(props){
@@ -24,10 +24,15 @@ class AdArticleManager extends React.Component {
 
     render() {
         return(
-            <div>
+            <Page
+                title={this.props.title}
+                breadcrumbs={[{ name: this.props.title, active: true }]}
+            >
+                <Row>
             {typeof this.props.ads === "undefined" ? <p>No ad for display!</p> :
                 this.props.ads.map( (ad,index) => <Row> <AdArticleDetails ad={ad} index={index}/> </Row>)}
-                </div>
+                </Row>
+            </Page>
         )
     }
 }

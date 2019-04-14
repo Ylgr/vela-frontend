@@ -100,13 +100,14 @@ class AdUploader extends React.Component {
                     </div>
                     <div className="modal-body">
                         <div className="row">
-                            <div className="col-md-8 my-2">
+                            <div className="col-md-8">
+                                <label> Article's name: </label>
                                 <input type="text" value={this.state.name} onChange={this.handleChangeName}
-                                       className="form-control" placeholder="Name"/>
+                                       className="form-control" placeholder="Example: Best restaurant of Vietnam"/>
                             </div>
                             <div className="col-md-4">
-                                <label> Category: <select value={this.state.category}
-                                                          onChange={this.handleChangeCategory}>
+                                <label> Category: </label>
+                                <select value={this.state.category} onChange={this.handleChangeCategory}>
                                     <option className="option" value="SPORT">Sport</option>
                                     <option className="option" value="FASHION">Fashion</option>
                                     <option className="option" value="BEAUTY">Beauty</option>
@@ -114,11 +115,10 @@ class AdUploader extends React.Component {
                                     <option className="option" value="TECHNOLOGY">Technology</option>
                                     <option className="option" value="DECORATE">Decorate</option>
                                 </select>
-                                </label>
                             </div>
                         </div>
                         <label>Url: </label>
-                        <input type="text" className="form-control" value={this.state.url} onChange={this.handleChangeUrl} placeholder="Url"/>
+                        <input type="text" className="form-control" value={this.state.url} onChange={this.handleChangeUrl} placeholder="Example: https://www.restaurant.com/"/>
 
                         <label>Contents: </label>
                         <textarea type="text" className="form-control" value={this.state.contents} onChange={this.handleChangeContents}/>
@@ -131,15 +131,15 @@ class AdUploader extends React.Component {
                             <div className="col-md-6 my-2">
                             <label>
                                 <div className="switch-wrap d-flex justify-content-between">
-                                    <p>Activated:</p>
-                                    <input className="my-1" type="checkbox" checked={this.state.isActive} onChange={this.handleChangeIsActive} />
+                                    <input className="my-2" type="checkbox" checked={this.state.isActive} onChange={this.handleChangeIsActive} />
+                                    <label> ? Activated </label>
                                 </div>
                             </label>
                             </div>
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <button className="btn btn-primary" onClick={this.closeModalAndSubmit}>Upload</button>
+                        <button className="btn btn-primary" onClick={this.closeModalAndSubmit}>Create</button>
                         <button type="button" className="btn btn-secondary" onClick={this.closeModal}>Close
                         </button>
                     </div>

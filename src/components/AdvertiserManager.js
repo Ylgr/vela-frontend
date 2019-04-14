@@ -7,6 +7,7 @@ import SideBar from "./layout/SideBar";
 import Header from "./layout/Header";
 import AdArticleManager from "./adArticle/AdArticleManager";
 import WalletHome from "./wallet/WalletHome";
+import ReferralPage from './referral/ReferralPage';
 
 class AdvertiserManager extends React.Component {
 
@@ -14,11 +15,11 @@ class AdvertiserManager extends React.Component {
         if(typeof this.props.locationParam !== 'undefined'){
             switch (this.props.locationParam) {
                 case 'all':
-                    return (<AdArticleManager/>);
+                    return (<AdArticleManager title="All"/>);
                 case 'beauty':
-                    return (<AdArticleManager/>);
+                    return (<AdArticleManager title="Beauty"/>);
                 default:
-                    return (<AdArticleManager/>);
+                    return (<AdArticleManager title="Our World"/>);
             }
         }else {
             switch (page) {
@@ -26,6 +27,8 @@ class AdvertiserManager extends React.Component {
                     return (<AdManager/>);
                 case 'walletHome':
                     return (<WalletHome/>);
+                case 'referral':
+                    return (<ReferralPage/>);
                 default:
                     return (<AdArticleManager/>);
             }

@@ -8,13 +8,14 @@ import {
     CardText,
     CardTitle,
     Col,
+    Row
 } from 'reactstrap';
 class AdDetails extends React.Component {
     render() {
         return(
-            <div>
-                {this.props.adReports.map( (ad,index) =>
+            <Row>
 
+                {this.props.adReports.map( (ad,index) =>
                     <Col md={6} sm={6} xs={12} className="mb-3" key={index}>
                     <Card className="flex-row">
                     <CardBody>
@@ -33,7 +34,8 @@ class AdDetails extends React.Component {
                     </Card>
                     </Col>
                 )}
-            </div>
+
+            </Row>
         )}
 }
 AdDetails.propTypes = {

@@ -11,8 +11,8 @@ export default (
                 <MainApp exact path="/" />
                 <MainApp exact path="/ad-manager" page = 'adManager'/>
                 <MainApp exact path="/fund" page = 'walletHome'/>
+                <MainApp exact path="/referral" page = 'referral'/>
                 <MainApp exact path="/articles/:location"/>
-                <MainApp exact path="/referral" component={AdAppearManager}/>
 
                 <Route exact path="/ads" component={AdAppearManager}/>
             </Switch>
