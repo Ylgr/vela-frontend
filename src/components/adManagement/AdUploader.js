@@ -77,7 +77,7 @@ class AdUploader extends React.Component {
             {
                 "id": id,
                 "name": this.state.name,
-                "contents": "Aliquip commodo.",
+                "contents": this.state.contents,
                 "category": this.state.category,
                 "data": this.state.file.base64,
                 "isActive": this.state.isActive,

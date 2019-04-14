@@ -58,6 +58,8 @@ AdvertiserManager.propTypes = {
     locationParam: PropTypes.string
 };
 
+
+
 function mapStateToProps(state, ownProps) {
     return {
         gasWallet: state.gasWallet

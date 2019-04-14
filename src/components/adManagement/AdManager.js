@@ -67,4 +67,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(AdManager);
-//                <AdDetails adReports={this.props.adReports}/>

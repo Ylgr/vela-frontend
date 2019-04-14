@@ -5,6 +5,7 @@ import advertiser from './advertiserReducer';
 import adReports from './adReportsReducer';
 import presentingAd from './presentingAdReducer';
 import presentingWallet from './presentingWalletReducer';
+import articles from './articlesReducer';
 
 const rootReducer = combineReducers({
     gasWallets,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     gasWallet,
     adReports,
     presentingAd,
-    presentingWallet
+    presentingWallet,
+    articles
 });
 
 export default rootReducer;
