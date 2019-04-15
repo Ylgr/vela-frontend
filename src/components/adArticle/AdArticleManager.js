@@ -11,7 +11,7 @@ import {bindActionCreators} from "redux";
 import * as articleActions from "../../actions/articleActions";
 
 class AdArticleManager extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
     }
 
@@ -20,18 +20,22 @@ class AdArticleManager extends React.Component {
     }
 
     render() {
-        return(
+        return (
             <Page
                 title={this.props.title}
-                breadcrumbs={[{ name: this.props.title, active: true }]}
+                breadcrumbs={[{name: this.props.title, active: true}]}
             >
                 <Col md="10" sm="10" xs="10">
-                <Row>
-            {typeof this.props.articles === "undefined" ? <p>No ad for display!</p> :
-                this.props.articles.map( (article,index) =>
-                    <div key={index}> <AdArticleDetails article={article} /> </div>
-                )}
-                </Row>
+                    <Row>
+                        {
+                            typeof this.props.articles === "undefined" ? <p>No ad for display!</p> :
+                            this.props.articles.map((article, index) =>
+                                <Col md="6" sm="6" xs="6">
+                                    <AdArticleDetails article={article}/>
+                                </Col>
+                            )
+                        }
+                    </Row>
                 </Col>
             </Page>
         )
@@ -56,4 +60,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(AdArticleManager);
+export default connect(mapStateToProps, mapDispatchToProps)(AdArticleManager);

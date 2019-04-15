@@ -6,8 +6,9 @@ class AdArticleDetails extends React.Component {
 
     render() {
         return(
-            <a href={this.props.article.url} target="_blank">
-            <Col>
+
+                <a href={this.props.article.url} target="_blank">
+
                 <Card>
                     <CardImg top src={this.props.article.data} />
                     <Row>
@@ -26,8 +27,7 @@ class AdArticleDetails extends React.Component {
                         </Col>
                     </Row>
                 </Card>
-            </Col>
-            </a>
+                </a>
         )
     }
 }
