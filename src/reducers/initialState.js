@@ -5,5 +5,7 @@ export default {
     adReports: [],
     presentingWallet: {},
     presentingAd: {},
-    articles: []
+    articles: [],
+    ping: {},
+    historian: []
 };

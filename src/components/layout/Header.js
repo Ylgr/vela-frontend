@@ -19,6 +19,7 @@ import {
     Row
 } from 'reactstrap';
 import bn from '../utils/bemnames';
+import Historian from '../historian/Historian';
 
 const bem = bn.create('header');
 
@@ -87,7 +88,7 @@ class Header extends React.Component {
                 <Col md="2" sm="2" xs="2">
                     <Nav navbar>
                         <NavItem>
-                            <Button color="warning" size="sm">Historian in blockchain</Button>
+                            <Historian />
                         </NavItem>
                     </Nav>
                 </Col>

@@ -6,6 +6,8 @@ import adReports from './adReportsReducer';
 import presentingAd from './presentingAdReducer';
 import presentingWallet from './presentingWalletReducer';
 import articles from './articlesReducer';
+import historian from './historianReducer';
+import ping from './pingReducer';
 
 const rootReducer = combineReducers({
     gasWallets,
@@ -14,7 +16,9 @@ const rootReducer = combineReducers({
     adReports,
     presentingAd,
     presentingWallet,
-    articles
+    articles,
+    historian,
+    ping
 });
 
 export default rootReducer;

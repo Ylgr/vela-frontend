@@ -5,6 +5,7 @@ import * as gasTransferAction from "../../actions/gasTransactionActions";
 import connect from "react-redux/es/connect/connect";
 import Modal from 'react-modal';
 import ModalStyles from "../ModalStyles";
+import { Col, FormGroup, Label } from 'reactstrap';
 
 class GasTransfer extends React.Component{
 
@@ -59,12 +60,25 @@ class GasTransfer extends React.Component{
                     ariaHideApp={false}
                     style={ModalStyles}
                     contentLabel="Example Modal">
-                    <button onClick={this.closeModal}>close</button>
                     <form onSubmit={this.handleSubmit}>
+                        <div className="modal-header">VelaToken Transfer</div>
                         <div className="modal-body">
-                            <label>Receiver: <input type="text" value={this.state.value} onChange={this.handleReceiverChange} /></label>
-                            <br/>
-                            <label>Amount:   <input type="text" value={this.state.value} onChange={this.handleAmountChange} /></label>
+                            <FormGroup row>
+                                <Label for="exampleEmail" sm={2}>
+                                    Receiver:
+                                </Label>
+                                <Col sm={10}>
+                                    <input type="text" value={this.state.value} onChange={this.handleReceiverChange} />
+                                </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                                <Label for="exampleEmail" sm={2}>
+                                    Amount:
+                                </Label>
+                                <Col sm={10}>
+                                    <input type="text" value={this.state.value} onChange={this.handleAmountChange} />
+                                </Col>
+                            </FormGroup>
                         </div>
                         <div className="modal-footer">
                             <button className="btn btn-primary" type="submit">Submit</button>
