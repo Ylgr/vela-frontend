@@ -1,25 +1,15 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {
-    MdAccountCircle,
     MdFace,
-    MdBorderAll,
     MdDirectionsRun,
-    MdChromeReaderMode,
     MdDashboard,
-    MdExtension,
-    MdGroupWork,
     MdBusinessCenter,
     MdKeyboardArrowDown,
     MdSpa,
-    MdPages,
     MdRadioButtonChecked,
-    MdSend,
     MdStar,
-    MdTextFields,
-    MdViewCarousel,
     MdWifi,
-    MdViewList,
     MdAddBox,
     MdCardGiftcard,
 } from 'react-icons/md';
@@ -33,7 +23,6 @@ import {
 } from 'reactstrap';
 import bn from '../utils/bemnames';
 import sidebarBgImage from '../../../public/images/sidebar.jpg';
-import logo300x211 from '../../../public/images/Vela-300x211.jpg';
 
 const sidebarBackground = {
     backgroundImage: `url("${sidebarBgImage}")`,
@@ -57,7 +46,6 @@ const navExplore = [
     {to: '/articles/event', name: 'Event', exact: false, Icon: MdStar},
     {to: '/articles/technology', name: 'Technology', exact: false, Icon: MdWifi},
 ];
-
 
 class SideBar extends React.Component {
     constructor(props) {
