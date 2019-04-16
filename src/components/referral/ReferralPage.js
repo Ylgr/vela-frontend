@@ -41,7 +41,7 @@ class ReferralPage extends React.Component {
                         <Card>
                             <CardHeader>How to referral?</CardHeader>
                             <CardBody>
-
+                            Coming soon!
                             </CardBody>
                         </Card>
                     </Col>
