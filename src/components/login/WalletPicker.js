@@ -3,7 +3,7 @@ import connect from "react-redux/es/connect/connect";
 import PropTypes from "prop-types";
 import {bindActionCreators} from "redux";
 import * as gasWalletActions from "../../actions/gasWalletActions";
-import WalletPickerDetail from "./WalletPickerDetail";
+import * as queryActions from "../../actions/queryActions";
 import {Card, CardBody, CardTitle} from "reactstrap";
 
 // TODO Update query in Fabric to load amount wallets
@@ -16,6 +16,7 @@ class WalletPicker extends React.Component {
     }
 
     walletOpened(id) {
+        this.props.queryActions.loadMapWalletArticle();
         this.props.actions.loadWallet(id);
     }
 
@@ -58,6 +59,7 @@ class WalletPicker extends React.Component {
 //pick={() => this.walletOpened(id)}
 WalletPicker.propTypes = {
     actions: PropTypes.object.isRequired,
+    queryActions: PropTypes.object.isRequired,
     advertiser: PropTypes.object.isRequired
 };
 
@@ -70,7 +72,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(gasWalletActions, dispatch)
+        actions: bindActionCreators(gasWalletActions, dispatch),
+        queryActions: bindActionCreators(queryActions, dispatch)
     };
 }
 

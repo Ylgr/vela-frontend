@@ -8,18 +8,15 @@ import PropTypes from "prop-types";
 import Page from "../layout/Page";
 import connect from "react-redux/es/connect/connect";
 import {bindActionCreators} from "redux";
-import * as articleActions from "../../actions/articleActions";
+import * as queryActions from "../../actions/queryActions";
 
 class AdArticleManager extends React.Component {
     constructor(props) {
-        super(props)
-    }
-
-    componentDidMount() {
-        this.props.actions.loadActiveArticle();
+        super(props);
     }
 
     render() {
+        console.log("this.props.mapWalletArticles",this.props.mapWalletArticles);
         return (
             <Page
                 title={this.props.title}
@@ -28,10 +25,10 @@ class AdArticleManager extends React.Component {
                 <Col md="10" sm="10" xs="10">
                     <Row>
                         {
-                            typeof this.props.articles === "undefined" ? <p>No ad for display!</p> :
-                            this.props.articles.map((article, index) =>
+                            this.props.mapWalletArticles.length === 0 ? <p>No ad for display!</p> :
+                            this.props.mapWalletArticles.map((mapArticle, index) =>
                                 <Col md="6" sm="6" xs="6">
-                                    <AdArticleDetails article={article}/>
+                                    <AdArticleDetails article={mapArticle.article}/>
                                 </Col>
                             )
                         }
@@ -44,19 +41,19 @@ class AdArticleManager extends React.Component {
 
 AdArticleManager.propTypes = {
     actions: PropTypes.object.isRequired,
-    articles: PropTypes.array.isRequired
+    mapWalletArticles: PropTypes.array.isRequired
 };
 
 
 function mapStateToProps(state, ownProps) {
     return {
-        articles: state.articles
+        mapWalletArticles: state.mapWalletArticles
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(articleActions, dispatch)
+        actions: bindActionCreators(queryActions, dispatch)
     };
 }
 

@@ -10,7 +10,6 @@ class AdArticleDetails extends React.Component {
 
     render() {
         return(
-
                 <a href={this.props.article.url} target="_blank">
 
                 <Card>
