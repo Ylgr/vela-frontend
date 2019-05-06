@@ -12,7 +12,7 @@ export function clearMapWalletArticleSuccess() {
 
 export function loadMapWalletArticle() {
     return function (dispatch) {
-        // dispatch(clearMapWalletArticleSuccess());
+        dispatch(clearMapWalletArticleSuccess());
         return queryApi.getRewardableWallet().then(res => {
             const wallets = apiResult.success(res);
             const adWallets = wallets.filter(wallet => {
@@ -22,7 +22,6 @@ export function loadMapWalletArticle() {
                 wallet.reports.map(report => {
                     adApi.get(getSecondPart(report)).then(res => {
                         const adReport = apiResult.success(res);
-                        console.log("adReport",adReport);
                         if(adReport.isActive === true){
                             const mapWalletArticle ={
                                 "wallet" : wallet,

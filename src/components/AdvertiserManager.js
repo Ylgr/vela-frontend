@@ -18,6 +18,14 @@ class AdvertiserManager extends React.Component {
                     return (<AdArticleManager title="All"/>);
                 case 'beauty':
                     return (<AdArticleManager title="Beauty"/>);
+                case 'sport':
+                    return (<AdArticleManager title="Sport"/>);
+                case 'fashion':
+                    return (<AdArticleManager title="Fashion"/>);
+                case 'event':
+                    return (<AdArticleManager title="Event"/>);
+                case 'technology':
+                    return (<AdArticleManager title="Technology"/>);
                 default:
                     return (<AdArticleManager title="Our World"/>);
             }

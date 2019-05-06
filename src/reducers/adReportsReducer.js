@@ -3,6 +3,8 @@ import initialState from './initialState';
 
 export default function AdReportsReducer(state = initialState.adReports, action) {
     switch (action.type) {
+        case type.CLEAR_AD_SUCCESS:
+            return [];
         case type.LOAD_AD_SUCCESS:
             return [
                 ...state,

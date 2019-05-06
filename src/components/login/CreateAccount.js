@@ -48,7 +48,6 @@ class CreateAccount extends React.Component {
                 "resource:org.vela.gas.Gas#" + walletId
             ]
         };
-        console.log(req);
         this.props.actions.createAdvertiser(req,walletId);
     }
 

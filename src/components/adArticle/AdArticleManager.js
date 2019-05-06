@@ -16,7 +16,6 @@ class AdArticleManager extends React.Component {
     }
 
     render() {
-        console.log("this.props.mapWalletArticles",this.props.mapWalletArticles);
         return (
             <Page
                 title={this.props.title}
@@ -28,7 +27,7 @@ class AdArticleManager extends React.Component {
                             this.props.mapWalletArticles.length === 0 ? <p>No ad for display!</p> :
                             this.props.mapWalletArticles.map((mapArticle, index) =>
                                 <Col md="6" sm="6" xs="6">
-                                    <AdArticleDetails article={mapArticle.article}/>
+                                    <AdArticleDetails mapArticle={mapArticle}/>
                                 </Col>
                             )
                         }

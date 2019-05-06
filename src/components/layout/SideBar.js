@@ -82,7 +82,7 @@ class SideBar extends React.Component {
                             <BSNavLink className={bem.e('nav-item-collapse')}>
                                 <div className="d-flex">
                                     <MdDashboard className={bem.e('nav-item-icon')}/>
-                                    <span className=" align-self-start">Our World</span>
+                                    <span className=" align-self-start">OUR WORLD</span>
                                 </div>
                                 <MdKeyboardArrowDown
                                     className={bem.e('nav-item-icon')}
