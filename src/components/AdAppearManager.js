@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {bindActionCreators} from "redux";
 import * as gasWalletActions from "../actions/gasWalletActions";
-import * as gasTransactionActions from "../actions/gasTransactionActions";
+import * as gasTransactionActions from "../actions/transactionActions";
 import connect from "react-redux/es/connect/connect";
 import Modal from "react-modal";
 

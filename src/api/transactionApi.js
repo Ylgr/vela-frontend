@@ -1,6 +1,6 @@
 import Ajax from './ajax';
 
-class GasTransactionApi extends Ajax{
+class TransactionApi extends Ajax{
     transfer (data) {
         return this.ajax().post('api/TransferGas', JSON.stringify(data), {headers: {'Content-Type': 'application/json'}})
     }
@@ -9,5 +9,5 @@ class GasTransactionApi extends Ajax{
     }
 }
 
-const gasTransactionApi = new GasTransactionApi();
-export default gasTransactionApi;
+const transactionApi = new TransactionApi();
+export default transactionApi;

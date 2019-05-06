@@ -8,6 +8,7 @@ import presentingWallet from './presentingWalletReducer';
 import articles from './articlesReducer';
 import historian from './historianReducer';
 import ping from './pingReducer';
+import mapWalletArticles from './mapWalletArticleReducer';
 
 const rootReducer = combineReducers({
     gasWallets,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
     presentingWallet,
     articles,
     historian,
-    ping
+    ping,
+    mapWalletArticles
 });
 
 export default rootReducer;

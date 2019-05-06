@@ -2,6 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Card, CardBody, CardImg, CardText, CardTitle, Col, Row} from "reactstrap";
 import {MdShare} from 'react-icons/md';
+import {bindActionCreators} from "redux";
+import * as adActions from "../../actions/adActions";
+import connect from "react-redux/es/connect/connect";
+
 class AdArticleDetails extends React.Component {
 
     render() {
@@ -21,7 +25,7 @@ class AdArticleDetails extends React.Component {
                             </CardBody>
                         </Col>
                         <Col md="2" sm="2" xs="2">
-                            <a href="share">
+                            <a >
                                 <MdShare/>
                             </a>
                         </Col>
@@ -36,4 +40,15 @@ AdArticleDetails.propTypes = {
     article: PropTypes.object
 };
 
-export default AdArticleDetails;
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(adActions, dispatch)
+    };
+}
+
+function mapStateToProps(state, ownProps) {
+    return {
+        gasWallet: state.gasWallet
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(AdArticleDetails);

@@ -7,5 +7,6 @@ export default {
     presentingAd: {},
     articles: [],
     ping: {},
-    historian: []
+    historian: [],
+    mapWalletArticles: []
 };

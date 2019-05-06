@@ -9,6 +9,7 @@ import './styles/reduction.scss';
 class MainApp extends React.Component {
 
     render() {
+        console.log("mapWalletArticles",this.props.mapWalletArticles);
         return (
             <div className="cr-app bg-light">
                 <div className="cr-content container-fluid">
@@ -25,7 +26,8 @@ AdvertiserManager.propTypes = {
 
 function mapStateToProps(state, ownProps) {
     return {
-        advertiser: state.advertiser
+        advertiser: state.advertiser,
+        mapWalletArticles: state.mapWalletArticles
     };
 }
 

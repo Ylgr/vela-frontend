@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import {bindActionCreators} from "redux";
-import * as gasTransferAction from "../../actions/gasTransactionActions";
+import * as gasTransferAction from "../../actions/transactionActions";
 import connect from "react-redux/es/connect/connect";
 import Modal from 'react-modal';
 import ModalStyles from "../ModalStyles";
