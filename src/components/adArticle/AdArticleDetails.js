@@ -5,6 +5,7 @@ import {MdShare} from 'react-icons/md';
 import {bindActionCreators} from "redux";
 import * as transactionActions from "../../actions/transactionActions";
 import connect from "react-redux/es/connect/connect";
+import AdArticleShare from "./AdArticleShare";
 
 class AdArticleDetails extends React.Component {
     constructor(props){
@@ -19,7 +20,6 @@ class AdArticleDetails extends React.Component {
             "publishWallet": "resource:org.vela.gas.Gas#0x00",
             "rewardWallet": "resource:org.vela.gas.Gas#"+ this.props.gasWallet.id
         };
-        console.log("req",req);
         this.props.actions.clickReward(req);
     }
 
@@ -40,9 +40,7 @@ class AdArticleDetails extends React.Component {
                             </CardBody>
                         </Col>
                         <Col md="2" sm="2" xs="2">
-                            <a href="#share">
-                                <MdShare/>
-                            </a>
+                            <AdArticleShare publishId={this.props.gasWallet.id} adId={this.props.mapArticle.article.id}/>
                         </Col>
                     </Row>
                 </Card>
